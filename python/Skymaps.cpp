@@ -121,6 +121,7 @@ void init_skymaps(py::module &m) {
 	                IntegratorTemplate<QDiffIntensity, QEnergy>> &i) {
 		         s.setIntegrator(i);
 	         })
+		.def("getEnergyAxis", &GammaSkymapRange::getEnergyAxis )
 	    .def("setMask", &GammaSkymapRange::setMask)
 	    .def("compute", &GammaSkymapRange::compute)
 	    .def("save", &GammaSkymapRange::save)

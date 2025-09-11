@@ -21,7 +21,10 @@ void init(py::module &m) {
 	py::class_<CosmicRayDensity, std::shared_ptr<CosmicRayDensity>>(
 	    subm, "CosmicRayDensity")
 	    .def("getDensityPerEnergy", &CosmicRayDensity::getDensityPerEnergy)
-	    .def("getEnergyAxis", &CosmicRayDensity::getEnergyAxis);
+	    .def("getEnergyAxis", &CosmicRayDensity::getEnergyAxis)
+	    .def("getEnergyScaleFactor", &CosmicRayDensity::getEnergyScaleFactor)
+		.def("getPID", &CosmicRayDensity::getPID);
+
 	py::class_<DummyCR, std::shared_ptr<DummyCR>,
 	           CosmicRayDensity>(subm, "DummyCR")
 	    .def(py::init<>())

@@ -39,6 +39,7 @@ doc/api/*
 .coverage
 *.dump
 *.DS_Store
+*.vscode/*
 
 # Libraries
 

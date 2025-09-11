@@ -91,6 +91,10 @@ void init_integrators(py::module &m) {
 	pizerointegrator.def("integrateOverLOS",
 	                     static_cast<QDiffIntensity (PiZeroIntegrator::*)(const QDirection &, const QEnergy &) const>(
 	                         &PiZeroIntegrator::integrateOverLOS));
+	pizerointegrator.def("integrateOverEnergy",
+						static_cast<QPiZeroIntegral (PiZeroIntegrator::*)(const Vector3QLength &, const QEnergy &) const>(
+							&PiZeroIntegrator::integrateOverEnergy));
+
 
 	// BremsstrahlungIntegrator
 	py::class_<BremsstrahlungIntegrator, InverseComptonIntegratorParentClass, std::shared_ptr<BremsstrahlungIntegrator>>

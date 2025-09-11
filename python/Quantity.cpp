@@ -98,7 +98,7 @@ void declare_quantity(py::module &m, std::string const &typestr,
 	    .def("toAstroPy", [apyu, suffix](const Q &q) {
 		    if (apyu.enabled) return apyu.q(static_cast<double>(q), suffix);
 		    throw std::runtime_error(
-		        "Error: cannot use .toApy() without "
+		        "Error: cannot use .toAstroPy() without "
 		        "having astropy package present.");
 	    });
 }
@@ -151,6 +151,7 @@ void init_quantity(py::module &m) {
 	declare_quantity<QFrequency>(m, "QFrequency", "Hz", apyu);
 	declare_quantity<QMassDensity>(m, "QMassDensity", "kg m^-3", apyu);
 	declare_quantity<QMField>(m, "QMField", "T", apyu);
+	declare_quantity<QPDensity>(m, "QPDensity", "m^-3", apyu);
 	declare_quantity<QPDensityPerEnergy>(m, "QPDensityPerEnergy", "m^-3 J^-1",
 	                                     apyu);
 	declare_quantity<QPower>(m, "QPower", "W", apyu);
@@ -165,11 +166,11 @@ void init_quantity(py::module &m) {
 
 	// |- unnamed
 	declare_quantity<QGREmissivity>(m, "QGREmissivity", "m^-5 kg^-1 s", apyu);
-	declare_quantity<QICInnerIntegral>(m, "QICInnerIntegral", "m^-3 kg^-1 s^2",
-	                                   apyu);
+	declare_quantity<QICInnerIntegral>(m, "QICInnerIntegral", "m^-3 kg^-1 s^2", apyu);
 	declare_quantity<QInverseEnergy>(m, "QInverseEnergy", "J^-1", apyu);
 	// declare_quantity<QColumnDensity>(m, "QColumnDensity", "m^-2", apyu);
 	declare_quantity<QRingCOIntensity>(m, "QRingCOIntensity", "m s^-1 K", apyu);
+	declare_quantity<QPiZeroIntegral>(m, "QPiZeroIntegral", "m^-2 s kg^-1", apyu);
 }
 
 }  // namespace hermes

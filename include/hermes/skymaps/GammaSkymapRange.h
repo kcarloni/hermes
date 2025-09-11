@@ -38,6 +38,8 @@ class GammaSkymapRange {
 
 	void compute();
 
+	std::vector<QEnergy> getEnergyAxis() const { return energies; }
+
 	/** output **/
 	void save(const std::shared_ptr<outputs::Output>& output) const;
 
