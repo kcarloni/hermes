@@ -11,15 +11,20 @@ namespace hermes { namespace neutralgas {
 
 RingData::RingData(GasType gas) : type(gas) {
 	if (gas == GasType::HI) {
-		readDataFile("NHrings_Ts300K.fits.gz");
+		readDataFile(getDataPath("GasDensity/Remy18/NHrings_Ts300K.fits.gz"));
 	}
 	if (gas == GasType::H2) {
-		readDataFile("WCOrings_COGAL.fits.gz");
+		readDataFile(getDataPath("GasDensity/Remy18/WCOrings_COGAL.fits.gz"));
 	}
 }
+RingData::RingData(GasType gas, const std::string &filename) : type(gas) {
+	readDataFile( filename );
+}
+
 
 void RingData::readDataFile(const std::string &filename) {
-	ffile = std::make_unique<FITSFile>(FITSFile(getDataPath("GasDensity/Remy18/" + filename)));
+	// ffile = std::make_unique<FITSFile>(FITSFile(getDataPath("GasDensity/Remy18/" + filename)));
+	ffile = std::make_unique<FITSFile>( FITSFile(filename) );
 	ffile->openFile(FITS::READ);
 
 	n_lon = ffile->readKeyValueAsInt("NAXIS1");

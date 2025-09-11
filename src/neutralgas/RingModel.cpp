@@ -45,6 +45,17 @@ QColumnDensity Ring::getColumnDensity(const QDirection &dir_) const {
 	return QColumnDensity(0);
 }
 
+// =========================================================================
+
+// void RingModel::fillRingContainer() {
+// 	for (std::size_t i = 0; i < dataPtr->getRingNumber(); ++i) {
+// 		auto lowBoundary = boundaries.at(i);
+// 		auto highBoundary = (i < 11) ? boundariesHI.at(i + 1) + 0.3_kpc : boundariesHI.at(i) + 1_kpc;
+// 	}
+// }
+
+// -----------------------------------------------
+
 RingModel::RingModel(GasType gas) : NeutralGasAbstract(), dataPtr(std::make_shared<RingData>(RingData(gas))) {
 	std::fill(XCOvalues.begin(), XCOvalues.end(),
 	          XcoDefaultValue);  // default value for XCO
@@ -52,14 +63,6 @@ RingModel::RingModel(GasType gas) : NeutralGasAbstract(), dataPtr(std::make_shar
 	          true);  // enable all by default
 	fillRingContainer();
 }
-
-// RingModel::RingModel(GasType gas, std::array<QRingX0Unit, 12> XCOvalues_)
-//     : NeutralGasAbstract(), dataPtr(std::make_shared<RingData>(RingData(gas))) {
-// 	std::copy(XCOvalues_.begin(), XCOvalues_.end(), XCOvalues.begin());
-// 	std::fill(enabledRings.begin(), enabledRings.end(),
-// 	          true);  // enable all by default
-// 	fillRingContainer();
-// }
 
 RingModel::RingModel(GasType gas, std::array<double, 12> XCOfactors)
     : NeutralGasAbstract(), dataPtr(std::make_shared<RingData>(RingData(gas))) {
@@ -86,6 +89,8 @@ void RingModel::fillRingContainer() {
 		}
 	}
 }
+
+// -----------------------------------------------
 
 std::array<bool, 12> RingModel::getEnabledRings() const { return enabledRings; }
 
