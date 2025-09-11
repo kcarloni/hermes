@@ -28,6 +28,8 @@ class RingData {
 
   public:
 	RingData(GasType gas);
+	RingData(GasType gas, const std::string &filename);
+
 	QColumnDensity getHIColumnDensityInRing(int ring, const QDirection &dir) const;
 	QRingCOIntensity getCOIntensityInRing(int ring, const QDirection &dir) const;
 
