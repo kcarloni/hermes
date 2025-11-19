@@ -34,8 +34,10 @@ PiZeroIntegrator::PiZeroIntegrator(const std::vector<std::shared_ptr<cosmicrays:
 PiZeroIntegrator::~PiZeroIntegrator() {}
 
 void PiZeroIntegrator::setupCacheTable(int N_x, int N_y, int N_z) {
-	const QLength rBorder = 35_kpc;
-	const QLength zBorder = 5_kpc;
+	// const QLength rBorder = 35_kpc;
+	// const QLength zBorder = 5_kpc;
+	const QLength rBorder = 20_kpc;
+	const QLength zBorder = 6_kpc;
 	Vector3QLength spacing = Vector3QLength(2 * rBorder / N_x, 2 * rBorder / N_y, 2 * zBorder / N_z);
 
 	// setup table
